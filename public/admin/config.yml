@@ -2,7 +2,7 @@ backend:
   name: github
   repo: chawlaamit/sair-sapatta-website
   branch: main
-  base_url: https://your-oauth-worker.YOUR_SUBDOMAIN.workers.dev
+  base_url: https://scgdevelopers.in
   auth_endpoint: auth
 
 media_folder: "public/images/uploads"
