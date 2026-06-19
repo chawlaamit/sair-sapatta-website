@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('settings', 'site');
+const s = settings!.data;
+---
+
+<BaseLayout
+  title="Why Buy at Sair Sapatta"
+  description="A rare chance to own in Rajpura's prime corridor — pre-leased, brand-anchored and highway-facing."
+  path="/why-buy/"
+>
+  <section class="section-dark">
+    <div class="container-narrow" style="text-align:center;">
+      <span class="eyebrow">Why Buy at Sair Sapatta</span>
+      <h1>A rare chance to own in Rajpura's prime corridor</h1>
+      <p class="lede" style="margin:24px auto 0;">Pre-leased, brand-anchored and highway-facing — Sair Sapatta is engineered to deliver both steady income and strong capital growth.</p>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="grid grid-2">
+        {s.whyCards.map((w) => (
+          <div class="card" style="display:flex;gap:22px;align-items:flex-start;">
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:46px;color:var(--gold-d);line-height:0.9;flex:none;">{w.number}</div>
+            <div>
+              <h3 style="font-size:26px;">{w.title}</h3>
+              <p style="font-size:15px;line-height:1.8;color:var(--muted-ink);margin:12px 0 0;">{w.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-navy">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:46px;">
+        <span class="eyebrow">Location Advantage</span>
+        <h2>On the Rajpura–Patiala Highway</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden;">
+        <div style="background:var(--navy);padding:34px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--gold-l);">Highway</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;">Direct frontage</div>
+        </div>
+        <div style="background:var(--navy);padding:34px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--gold-l);">Central</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;">Heart of Rajpura</div>
+        </div>
+        <div style="background:var(--navy);padding:34px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--gold-l);">Dense</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;">Residential catchment</div>
+        </div>
+        <div style="background:var(--navy);padding:34px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--gold-l);">42</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px;">Showroom plots</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:46px;">
+        <a href="/enquire/" class="btn btn-gold">Enquire about availability</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

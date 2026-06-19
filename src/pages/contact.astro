@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('settings', 'site');
+const s = settings!.data;
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Visit the site, give us a call, or drop a message — get in touch with Sair Sapatta."
+  path="/contact/"
+>
+  <section class="section-dark">
+    <div class="container-narrow" style="text-align:center;">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Contact us</h1>
+      <p class="lede" style="margin:22px auto 0;">Visit the site, give us a call, or drop a message — we'd love to show you around Sair Sapatta.</p>
+    </div>
+    <div class="container" style="padding-top:46px;padding-bottom:clamp(56px,8vw,90px);display:flex;flex-wrap:wrap;gap:24px;">
+      <div class="contact-card">
+        <div style="width:38px;height:2px;background:var(--gold);margin-bottom:18px;"></div>
+        <h3 style="color:var(--gold-l);">Address</h3>
+        <p style="font-size:15px;line-height:1.8;color:var(--cream);margin:14px 0 0;">{s.address}</p>
+      </div>
+      <div class="contact-card">
+        <div style="width:38px;height:2px;background:var(--gold);margin-bottom:18px;"></div>
+        <h3 style="color:var(--gold-l);">Call &amp; Email</h3>
+        <p style="font-size:15px;line-height:1.9;color:var(--cream);margin:14px 0 0;">
+          <a href={`tel:${s.phone1.replace(/\s/g, '')}`}>{s.phone1}</a><br />
+          <a href={`tel:${s.phone2.replace(/\s/g, '')}`}>{s.phone2}</a><br />
+          <a href={`mailto:${s.email}`} style="color:var(--gold-l);">{s.email}</a>
+        </p>
+      </div>
+      <div class="contact-card">
+        <div style="width:38px;height:2px;background:var(--gold);margin-bottom:18px;"></div>
+        <h3 style="color:var(--gold-l);">Site Visit</h3>
+        <p style="font-size:15px;line-height:1.8;color:var(--cream);margin:14px 0 18px;">Open daily · 10:00 AM – 7:00 PM</p>
+        <a href="/enquire/" class="btn btn-gold" style="padding:12px 24px;font-size:12px;">Book a visit</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="placeholder-box" style="height:340px;background-image:repeating-linear-gradient(45deg,#e9e3d6,#e9e3d6 12px,#efe9dd 12px,#efe9dd 24px);color:var(--gold-d);">
+        Location Map · Rajpura–Patiala Highway
+      </div>
+    </div>
+  </section>
+</BaseLayout>

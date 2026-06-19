@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandCard from '../components/BrandCard.astro';
+import { getCollection } from 'astro:content';
+
+const brands = await getCollection('brands');
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which brands have signed at Sair Sapatta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zudio is open and trading, The Beer Cafe and Subway are signed, and Gopal Sweets is under construction. Several more national brands are in active discussion for the remaining showroom plots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Sair Sapatta RERA registered?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Sair Sapatta is RERA registered under PBRERA-PTL65-PC0373."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many showroom plots does Sair Sapatta have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sair Sapatta has 42 independent showroom plots, each of which can be developed across multiple floors."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Brands at Sair Sapatta"
+  description="A curated mix of national retail, dining and lifestyle names at Sair Sapatta — some already trading, others fitting out, and many more in progress."
+  path="/brands/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <section class="section-dark">
+    <div class="container-narrow" style="text-align:center;">
+      <span class="eyebrow">The Brand Lineup</span>
+      <h1>Brands at Sair Sapatta</h1>
+      <p class="lede" style="margin:22px auto 0;">A curated mix of national retail, dining and lifestyle names — some already trading, others fitting out, and many more in progress.</p>
+    </div>
+    <div class="container" style="padding-top:40px;padding-bottom:clamp(56px,8vw,90px);">
+      <div class="grid grid-4">
+        {brands.map((b) => (
+          <BrandCard name={b.data.name} category={b.data.category} status={b.data.status} statusLabel={b.data.statusLabel} note={b.data.note} />
+        ))}
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px dashed var(--line);border-radius:3px;padding:32px 30px;min-height:240px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--gold-l);">&amp; many more</div>
+          <p style="font-size:13.5px;line-height:1.7;color:var(--muted);margin:12px 0 18px;">Several more leading brands are in active discussion.</p>
+          <a href="/enquire/" class="btn btn-outline" style="padding:11px 22px;font-size:11px;">Lease a space</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direct-answer block: helps both classic SEO featured snippets and AI answer engines -->
+  <section class="section section-light">
+    <div class="container-narrow">
+      <h2 style="text-align:center;">Frequently Asked Questions</h2>
+      <div style="margin-top:36px;display:flex;flex-direction:column;gap:28px;">
+        <div>
+          <h3 style="font-size:20px;">Which brands have signed at Sair Sapatta?</h3>
+          <p style="color:var(--muted-ink);margin-top:8px;">Zudio is open and trading, The Beer Cafe and Subway are signed, and Gopal Sweets is under construction. Several more national brands are in active discussion for the remaining showroom plots.</p>
+        </div>
+        <div>
+          <h3 style="font-size:20px;">Is Sair Sapatta RERA registered?</h3>
+          <p style="color:var(--muted-ink);margin-top:8px;">Yes. Sair Sapatta is RERA registered under PBRERA-PTL65-PC0373.</p>
+        </div>
+        <div>
+          <h3 style="font-size:20px;">How many showroom plots does Sair Sapatta have?</h3>
+          <p style="color:var(--muted-ink);margin-top:8px;">Sair Sapatta has 42 independent showroom plots, each of which can be developed across multiple floors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

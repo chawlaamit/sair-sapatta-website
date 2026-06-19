@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('settings', 'site');
+const s = settings!.data;
+---
+
+<BaseLayout
+  title="Enquire — Let's Find Your Space"
+  description="Share your details and our team will reach out with availability, pricing and the master plan for Sair Sapatta."
+  path="/enquire/"
+>
+  <section class="section-dark" style="min-height:calc(100vh - 74px);">
+    <div class="container" style="padding-top:clamp(48px,7vw,90px);padding-bottom:clamp(48px,7vw,90px);display:flex;flex-wrap:wrap;gap:50px;">
+      <div style="flex:1 1 360px;min-width:300px;">
+        <span class="eyebrow">Enquire</span>
+        <h1>Let's find your space</h1>
+        <p class="hero-text" style="margin-top:20px;max-width:420px;">Share your details and our team will reach out with availability, pricing and the master plan. Whether you wish to lease or to buy, we'll guide you through it.</p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px;">
+          <a href={`tel:${s.phone1.replace(/\s/g, '')}`} class="contact-link">
+            <span class="contact-icon">☏</span>
+            <span>
+              <span style="display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Call</span>
+              <span style="font-size:16px;">{s.phone1} · {s.phone2}</span>
+            </span>
+          </a>
+          <a href={`mailto:${s.email}`} class="contact-link">
+            <span class="contact-icon">@</span>
+            <span>
+              <span style="display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Email</span>
+              <span style="font-size:16px;">{s.email}</span>
+            </span>
+          </a>
+          <a href={s.whatsapp} target="_blank" class="contact-link">
+            <span class="contact-icon">WA</span>
+            <span>
+              <span style="display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">WhatsApp</span>
+              <span style="font-size:16px;">Chat with us instantly</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div style="flex:1 1 380px;min-width:300px;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:3px;padding:clamp(28px,4vw,42px);">
+          <form class="enquiry-form" action="https://api.web3forms.com/submit" method="POST">
+            <!--
+              STEP REQUIRED BEFORE THIS FORM WORKS:
+              1. Go to web3forms.com, enter your email, get a free access key (no signup needed)
+              2. Replace YOUR_ACCESS_KEY_HERE below with that key
+              3. Submissions will land directly in your inbox
+            -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+            <input type="hidden" name="subject" value="New Enquiry — Sair Sapatta" />
+            <input type="hidden" name="redirect" value="/thank-you/" />
+
+            <label for="name">Name of Person *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required pattern="[0-9+\s-]{10,}" />
+
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option>Leasing a space</option>
+              <option>Buying a showroom</option>
+              <option>General enquiry</option>
+            </select>
+
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Tell us what you're looking for"></textarea>
+
+            <button type="submit" class="btn btn-gold" style="width:100%;margin-top:24px;padding:16px;">Submit Enquiry</button>
+            <p style="font-size:11px;color:var(--muted);text-align:center;margin:16px 0 0;">RERA: {s.rera}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

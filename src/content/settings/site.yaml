@@ -1,0 +1,38 @@
+siteName: Sair Sapatta
+tagline: A place for your every mood.
+domain: "https://scgdevelopers.in"
+rera: PBRERA-PTL65-PC0373
+phone1: "+91 98777 96723"
+phone2: "+91 98777 96725"
+email: sairsapata@gmail.com
+address: "Sair Sapatta, by SCG Developers, Rajpura–Patiala Highway, Rajpura, Punjab"
+whatsapp: "https://wa.me/919877796723"
+heroEyebrow: "Premium Commercial Showrooms · Rajpura"
+heroDescription: "A landmark retail destination of 42 independent showroom plots on the Rajpura–Patiala Highway — already home to Zudio, Gopal Sweets, The Beer Cafe, Subway and more."
+stats:
+  - number: "42"
+    label: "Independent Showroom Plots"
+  - number: "4+"
+    label: "Signature Brands Onboard"
+  - number: "Multi"
+    label: "Floor Development per Plot"
+whyCards:
+  - number: "01"
+    title: "Strong, Dependable ROI"
+    description: "A pre-leased, brand-anchored destination built to deliver healthy rental yields from day one."
+  - number: "02"
+    title: "Rapid Price Appreciation"
+    description: "Early-stage pricing in Rajpura's fastest-developing commercial corridor — positioned for sharp capital growth."
+  - number: "03"
+    title: "The Heart of Rajpura"
+    description: "A central, high-visibility location wrapped in dense residential catchment and daily footfall."
+  - number: "04"
+    title: "Highway Approachability"
+    description: "Direct frontage on the Rajpura–Patiala Highway with effortless access and arrival for every visitor."
+values:
+  - title: "Built on Trust"
+    description: "We build with transparency, RERA compliance and an obsession for timely delivery."
+  - title: "Brand-First Curation"
+    description: "We sign category leaders so every unit benefits from a magnetic, ready-made footfall."
+  - title: "Design that Endures"
+    description: "Independent plots with multi-floor flexibility — architecture made to grow with your business."

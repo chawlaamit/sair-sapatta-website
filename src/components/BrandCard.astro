@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  category: string;
+  status: 'open' | 'construction' | 'signed';
+  statusLabel: string;
+  note?: string;
+}
+const { name, category, status, statusLabel, note } = Astro.props;
+const badgeClass = status === 'open' ? 'badge-open' : status === 'construction' ? 'badge-construction' : 'badge-signed';
+---
+<div class="brand-card">
+  <div class="brand-card-logo">
+    <span class="brand-card-name">{name}</span>
+  </div>
+  <div class="brand-card-cat">{category}</div>
+  {note && <p style="font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 14px;">{note}</p>}
+  <span class={`badge ${badgeClass}`}><span class="badge-dot"></span>{statusLabel}</span>
+</div>

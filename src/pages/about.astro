@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('settings', 'site');
+const s = settings!.data;
+---
+
+<BaseLayout
+  title="About SCG Developers"
+  description="Sair Sapatta is the flagship commercial development of SCG Developers, built to give Rajpura a retail and lifestyle destination worthy of its growth."
+  path="/about/"
+>
+  <section class="section-dark">
+    <div class="container-narrow" style="text-align:center;padding-top:clamp(64px,9vw,120px);padding-bottom:clamp(64px,9vw,120px);">
+      <span class="eyebrow">About</span>
+      <h1>A vision by SCG Developers</h1>
+      <p class="lede" style="margin:24px auto 0;">Sair Sapatta is the flagship commercial development of SCG Developers — conceived to give Rajpura a retail and lifestyle destination worthy of its growth.</p>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:54px;">
+      <div style="flex:1 1 360px;min-width:300px;">
+        <h2>Who we are</h2>
+        <div style="width:40px;height:2px;background:var(--gold);margin:18px 0 22px;"></div>
+        <p style="font-size:16px;line-height:1.85;color:var(--muted-ink);">SCG Developers is a real-estate developer focused on building commercial landmarks that endure. We combine disciplined planning, RERA-compliant transparency and a relentless focus on timely delivery to create assets our partners and investors can trust.</p>
+        <p style="font-size:16px;line-height:1.85;color:var(--muted-ink);margin-top:16px;">With Sair Sapatta, we set out to do something Rajpura had not seen before — an organised, brand-anchored commercial complex that brings national retail and dining names together under one prestigious address.</p>
+      </div>
+      <div style="flex:1 1 300px;min-width:280px;">
+        <div style="background:var(--navy);border-radius:3px;padding:36px 34px;color:var(--cream);">
+          <h3 style="font-style:italic;font-weight:500;font-size:24px;text-align:center;color:var(--gold-l);margin:0 0 18px;">"Place for your every mood"</h3>
+          <p style="font-size:14.5px;line-height:1.8;color:var(--muted);text-align:center;margin:0;">More than a marketplace — a destination to shop, dine, meet and unwind, designed for every hour and every mood of the day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:44px;">
+        <span class="eyebrow">What guides us</span>
+        <h2>Our principles</h2>
+      </div>
+      <div class="grid grid-3">
+        {s.values.map((v) => (
+          <div style="border:1px solid #e7e0d2;border-radius:3px;padding:32px 30px;background:var(--ivory);">
+            <div style="width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+              <span style="width:8px;height:8px;background:var(--gold);transform:rotate(45deg);"></span>
+            </div>
+            <h3>{v.title}</h3>
+            <p style="font-size:14.5px;line-height:1.75;color:var(--muted-ink);margin:12px 0 0;">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-navy0">
+    <div class="container-narrow" style="text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--cream);line-height:1.5;margin:0;">
+        Sair Sapatta is RERA-registered under<br />
+        <span style="color:var(--gold-l);font-style:normal;letter-spacing:1px;">{s.rera}</span>
+      </p>
+      <a href="/enquire/" class="btn btn-gold" style="margin-top:30px;">Talk to our team</a>
+    </div>
+  </section>
+</BaseLayout>

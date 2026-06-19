@@ -1,0 +1,46 @@
+---
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('settings', 'site');
+const s = settings!.data;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div style="flex: 1 1 320px; min-width: 280px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+        <span>
+          <span class="brand-mark-name">{s.siteName}</span>
+          <span class="brand-mark-sub">by SCG Developers</span>
+        </span>
+      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--gold-l);margin:0 0 10px;">{s.tagline}</p>
+      <p style="font-size:13.5px;line-height:1.7;color:var(--muted);max-width:340px;margin:0;">A premium commercial destination of 42 independent showroom plots on the Rajpura–Patiala Highway.</p>
+    </div>
+    <div class="footer-col" style="flex: 0 1 160px;">
+      <h4>Explore</h4>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/about/">About Us</a>
+        <a href="/brands/">Brands</a>
+        <a href="/why-buy/">Why Buy</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex: 0 1 240px;">
+      <h4>Reach Us</h4>
+      <div class="footer-links" style="color:var(--muted);">
+        <a href={`tel:${s.phone1.replace(/\s/g, '')}`}>{s.phone1}</a>
+        <a href={`tel:${s.phone2.replace(/\s/g, '')}`}>{s.phone2}</a>
+        <a href={`mailto:${s.email}`}>{s.email}</a>
+        <span>{s.address}</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© {year} SCG Developers. All rights reserved.</span>
+      <span style="letter-spacing:1px;">RERA · {s.rera}</span>
+    </div>
+  </div>
+</footer>

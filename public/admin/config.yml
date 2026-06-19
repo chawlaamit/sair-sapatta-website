@@ -1,0 +1,66 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/sair-sapatta-website
+  branch: main
+  base_url: https://your-oauth-worker.YOUR_SUBDOMAIN.workers.dev
+  auth_endpoint: auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "brands"
+    label: "Brands"
+    folder: "src/content/brands"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Brand Name", name: "name", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Now Open", value: "open" }
+          - { label: "Under Construction", value: "construction" }
+          - { label: "Signed", value: "signed" }
+      - { label: "Status Label (shown on site)", name: "statusLabel", widget: "string" }
+      - { label: "Note", name: "note", widget: "text" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - file: "src/content/settings/site.yaml"
+        label: "Site Settings"
+        name: "site"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Domain (e.g. https://sairsapatta.com)", name: "domain", widget: "string" }
+          - { label: "RERA Number", name: "rera", widget: "string" }
+          - { label: "Phone 1", name: "phone1", widget: "string" }
+          - { label: "Phone 2", name: "phone2", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "text" }
+          - { label: "WhatsApp Link", name: "whatsapp", widget: "string" }
+          - { label: "Hero Eyebrow Text", name: "heroEyebrow", widget: "string" }
+          - { label: "Hero Description", name: "heroDescription", widget: "text" }
+          - label: "Stats Bar"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - label: "Why Buy Cards"
+            name: "whyCards"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Values (About page)"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
