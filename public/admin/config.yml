@@ -36,7 +36,7 @@ collections:
         fields:
           - { label: "Site Name", name: "siteName", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "Domain (e.g. https://sairsapatta.com)", name: "domain", widget: "string" }
+          - { label: "Domain (e.g. https://scgdevelopers.in)", name: "domain", widget: "string" }
           - { label: "RERA Number", name: "rera", widget: "string" }
           - { label: "Phone 1", name: "phone1", widget: "string" }
           - { label: "Phone 2", name: "phone2", widget: "string" }
