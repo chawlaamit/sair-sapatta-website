@@ -16,6 +16,7 @@ const settings = defineCollection({
   schema: z.object({
     siteName: z.string(),
     tagline: z.string(),
+    logo: z.string().optional(),
     domain: z.string(),
     rera: z.string(),
     phone1: z.string(),
