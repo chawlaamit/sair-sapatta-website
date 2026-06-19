@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR_GITHUB_USERNAME/sair-sapatta-website
+  repo: chawlaamit/sair-sapatta-website
   branch: main
   base_url: https://your-oauth-worker.YOUR_SUBDOMAIN.workers.dev
   auth_endpoint: auth
