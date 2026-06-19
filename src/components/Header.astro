@@ -22,10 +22,14 @@ function isActive(href: string) {
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="brand-mark">
-      <span>
-        <span class="brand-mark-name">{s.siteName}</span>
-        <span class="brand-mark-sub">by SCG Developers</span>
-      </span>
+      {s.logo ? (
+        <img src={s.logo} alt={s.siteName} style="height: 56px; width: auto; display: block;" />
+      ) : (
+        <span>
+          <span class="brand-mark-name">{s.siteName}</span>
+          <span class="brand-mark-sub">by SCG Developers</span>
+        </span>
+      )}
     </a>
     <nav class="main-nav">
       {navItems.map((item) => (
