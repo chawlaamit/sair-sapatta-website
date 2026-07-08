@@ -7,7 +7,8 @@ const brands = defineCollection({
     category: z.string(),
     status: z.enum(['open', 'construction', 'signed']),
     statusLabel: z.string(),
-    note: z.string()
+    note: z.string(),
+    logo: z.string().optional()
   })
 });
 

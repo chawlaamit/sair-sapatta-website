@@ -75,7 +75,7 @@ const featured = brands.slice(0, 4);
       </div>
       <div class="grid grid-4">
         {featured.map((b) => (
-          <BrandCard name={b.data.name} category={b.data.category} status={b.data.status} statusLabel={b.data.statusLabel} />
+          <BrandCard name={b.data.name} category={b.data.category} status={b.data.status} statusLabel={b.data.statusLabel} logo={b.data.logo} />
         ))}
       </div>
     </div>

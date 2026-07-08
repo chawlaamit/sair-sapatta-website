@@ -52,7 +52,7 @@ const faqSchema = {
     <div class="container" style="padding-top:40px;padding-bottom:clamp(56px,8vw,90px);">
       <div class="grid grid-4">
         {brands.map((b) => (
-          <BrandCard name={b.data.name} category={b.data.category} status={b.data.status} statusLabel={b.data.statusLabel} note={b.data.note} />
+          <BrandCard name={b.data.name} category={b.data.category} status={b.data.status} statusLabel={b.data.statusLabel} note={b.data.note} logo={b.data.logo} />
         ))}
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px dashed var(--line);border-radius:3px;padding:32px 30px;min-height:240px;">
           <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--gold-l);">&amp; many more</div>

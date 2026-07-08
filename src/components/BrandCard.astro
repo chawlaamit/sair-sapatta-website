@@ -5,13 +5,20 @@ interface Props {
   status: 'open' | 'construction' | 'signed';
   statusLabel: string;
   note?: string;
+  logo?: string;
 }
-const { name, category, status, statusLabel, note } = Astro.props;
+const { name, category, status, statusLabel, note, logo } = Astro.props;
 const badgeClass = status === 'open' ? 'badge-open' : status === 'construction' ? 'badge-construction' : 'badge-signed';
 ---
 <div class="brand-card">
-  <div class="brand-card-logo">
-    <span class="brand-card-name">{name}</span>
+  <div class="brand-card-logo" style={logo ? 'height:auto;padding:10px 0 24px;' : undefined}>
+    {logo ? (
+      <span style="display:flex;align-items:center;justify-content:center;background:#fff;border-radius:3px;width:100%;height:120px;padding:18px 24px;">
+        <img src={logo} alt={`${name} logo`} style="max-height:100%;max-width:100%;object-fit:contain;" />
+      </span>
+    ) : (
+      <span class="brand-card-name">{name}</span>
+    )}
   </div>
   <div class="brand-card-cat">{category}</div>
   {note && <p style="font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 14px;">{note}</p>}
