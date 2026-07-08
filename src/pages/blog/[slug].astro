@@ -12,10 +12,15 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const seoTitle = post.data.metaTitle || `${post.data.title} | Sair Sapatta`;
+const seoDesc = post.data.metaDescription || post.data.excerpt;
 ---
-<BaseLayout title={`${post.data.title} | Sair Sapatta`} description={post.data.excerpt}>
+<BaseLayout title={seoTitle} description={seoDesc}>
   <section class="section">
     <div class="container" style="max-width: 760px;">
+      {post.data.image && (
+        <img src={post.data.image} alt={post.data.title} style="width: 100%; border-radius: 8px; margin-bottom: 2rem; object-fit: cover; max-height: 420px;" />
+      )}
       <p style="font-size: 0.8rem; color: #888; margin: 0 0 0.5rem;">
         {new Date(post.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
         {post.data.author && ` · ${post.data.author}`}
