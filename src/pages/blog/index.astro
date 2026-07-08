@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
+---
+<BaseLayout title="Blog | Sair Sapatta" description="News, updates and investment insights from Sair Sapatta by SCG Developers.">
+  <section class="section">
+    <div class="container">
+      <h1 style="font-family: var(--font-heading); color: var(--gold); margin-bottom: 2rem;">Latest Updates</h1>
+      <div style="display: grid; gap: 2rem;">
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}/`} style="display: block; background: var(--ivory); border-radius: 8px; padding: 1.5rem 2rem; text-decoration: none; color: inherit; border: 1px solid #e0d9ce;">
+            <p style="font-size: 0.8rem; color: #888; margin: 0 0 0.5rem;">{new Date(post.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h2 style="font-family: var(--font-heading); color: var(--navy); margin: 0 0 0.75rem; font-size: 1.4rem;">{post.data.title}</h2>
+            <p style="color: #555; margin: 0 0 1rem;">{post.data.excerpt}</p>
+            <span style="color: var(--gold); font-size: 0.9rem; font-weight: 500;">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
