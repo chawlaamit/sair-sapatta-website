@@ -39,6 +39,9 @@ const blog = defineCollection({
     date: z.date(),
     excerpt: z.string(),
     author: z.string().optional(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    image: z.string().optional(),
   })
 });
 
