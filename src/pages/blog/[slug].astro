@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<BaseLayout title={`${post.data.title} | Sair Sapatta`} description={post.data.excerpt}>
+  <section class="section">
+    <div class="container" style="max-width: 760px;">
+      <p style="font-size: 0.8rem; color: #888; margin: 0 0 0.5rem;">
+        {new Date(post.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {post.data.author && ` · ${post.data.author}`}
+      </p>
+      <h1 style="font-family: var(--font-heading); color: var(--navy); margin: 0 0 2rem;">{post.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+      <a href="/blog/" style="display: inline-block; margin-top: 2rem; color: var(--gold);">← Back to Blog</a>
+    </div>
+  </section>
+</BaseLayout>
