@@ -32,4 +32,14 @@ const settings = defineCollection({
   })
 });
 
-export const collections = { brands, settings };
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    excerpt: z.string(),
+    author: z.string().optional(),
+  })
+});
+
+export const collections = { brands, settings, blog };
