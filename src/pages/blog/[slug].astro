@@ -14,22 +14,34 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const seoTitle = post.data.metaTitle || `${post.data.title} | Sair Sapatta`;
 const seoDesc = post.data.metaDescription || post.data.excerpt;
+const dateStr = new Date(post.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <BaseLayout title={seoTitle} description={seoDesc}>
-  <section class="section">
-    <div class="container" style="max-width: 760px;">
-      {post.data.image && (
-        <img src={post.data.image} alt={post.data.title} style="width: 100%; border-radius: 8px; margin-bottom: 2rem; object-fit: cover; max-height: 420px;" />
-      )}
-      <p style="font-size: 0.8rem; color: #888; margin: 0 0 0.5rem;">
-        {new Date(post.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
-        {post.data.author && ` · ${post.data.author}`}
-      </p>
-      <h1 style="font-family: var(--font-heading); color: var(--navy); margin: 0 0 2rem;">{post.data.title}</h1>
-      <div class="prose">
-        <Content />
+  <section class="section-dark post-hero">
+    <div class="container-narrow" style="text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:10px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></span>
+        <span class="eyebrow">{dateStr}{post.data.author && ` · ${post.data.author}`}</span>
       </div>
-      <a href="/blog/" style="display: inline-block; margin-top: 2rem; color: var(--gold);">← Back to Blog</a>
+      <h1 class="post-title">{post.data.title}</h1>
+      <div style="width:44px;height:2px;background:var(--gold);margin:30px auto 0;"></div>
+    </div>
+  </section>
+
+  <section class="section-light" style="padding-bottom:clamp(64px,9vw,110px);">
+    {post.data.image && (
+      <div class="post-figure">
+        <img src={post.data.image} alt={post.data.title} />
+      </div>
+    )}
+    <article class="prose">
+      <Content />
+    </article>
+    <div style="max-width:824px;margin:0 auto;padding:48px 32px 0;">
+      <div style="border-top:1px solid #e7e0d2;padding-top:32px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;">
+        <a href="/blog/" style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);text-decoration:none;">← Back to Blog</a>
+        <a href="/enquire/" class="btn btn-gold" style="padding:13px 26px;font-size:12px;">Enquire Now</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
